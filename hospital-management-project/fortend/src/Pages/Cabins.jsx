@@ -5,7 +5,7 @@ const Cabins = () => {
   return (
     <div className={Styles.cabins}>
       <div className={Styles.sidebar}>
-         <NavLink to="premium">Premium Cabin</NavLink>
+         <NavLink to="">Premium Cabin</NavLink>
          <NavLink to="standard">Standard Cabin</NavLink>
          <NavLink to="icu">ICU</NavLink>
          <NavLink to="ot">Operation theater</NavLink>

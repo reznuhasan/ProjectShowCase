@@ -38,7 +38,7 @@ function App() {
           element:<Cabins/>,
           children:[
             {
-              path:"premium",
+              path:"",
               element:<PremiumCabin/>
             },
             {
