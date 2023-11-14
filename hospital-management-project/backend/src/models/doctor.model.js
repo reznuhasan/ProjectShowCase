@@ -41,6 +41,18 @@ const doctorSchema=new Schema({
     available:{
         type:String,
         required:true,
+    },
+    serial:{
+        type:Number,
+        required:true,
+    },
+    doctorImage:{
+        type:String,
+        required:true,
+    },
+    description:{
+        type:String,
+        required:true,
     }
 },
 {
