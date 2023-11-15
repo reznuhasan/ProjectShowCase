@@ -1,9 +1,10 @@
 import express from "express"
-import { createUser } from "../controllers/user.ctrl.js";
+import { createUser,loginUser} from "../controllers/user.ctrl.js";
 
 const router=express.Router();
 
-router.post('/create',createUser);
+router.post('/register',createUser);
+router.post('/login',loginUser)
 router.get('/',(req,res)=>{
     res.send("find all user");
 })
