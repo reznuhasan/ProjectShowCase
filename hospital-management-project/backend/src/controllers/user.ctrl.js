@@ -3,7 +3,8 @@ const User=userModel;
 
 const createUser=async(req,res)=>{
     try {
-        const checkUser=await User.findOne({email:req.body.email})
+        const email=req.body.email
+        const checkUser=await User.findOne({email:email})
         if(checkUser){
             res.status(401).json({"message":"email already used"});
         }
@@ -16,7 +17,8 @@ const createUser=async(req,res)=>{
 }
 const loginUser=async(req,res)=>{
     try {
-        const checkUser=await User.findOne({email:req.body.email});
+        const email=req.body.email
+        const checkUser=await User.findOne({email:email});
         if(!checkUser){
             res.status(401).json({"message":"user not find"})
         }
