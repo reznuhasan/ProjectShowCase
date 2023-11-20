@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import Styles from '../Styles/Register.module.css';
+import Styles1 from '../Styles/login.module.css';
 import ImportantLabel from './ImportantLabel';
 import { Link } from 'react-router-dom';
 import { apiURI } from '../utlis/api';
 
-const Register = () => {
+const Login = () => {
     const [user, setUser] = useState({
-        name: '',
         email: '',
         password: '',
-        age: '',
-        mobile: '',
     });
     const [show, setShow] = useState("true");
     const handlePassword = (e) => {
@@ -31,7 +29,7 @@ const Register = () => {
         e.preventDefault();
         console.log(user);
         try {
-            const response = await apiURI.post("/users/register", user);
+            const response = await apiURI.post("/users/login", user);
             console.log(response.data)
         } catch (error) {
             console.log(error)
@@ -39,14 +37,10 @@ const Register = () => {
     };
 
     return (
-        <div className={Styles.register}>
+        <div className={Styles1.login}>
             <div className={Styles.formContainer}>
-                <h1 className={Styles.title}>PATIENT REGISTRATION</h1>
+                <h1 className={Styles.title}>PATIENT LOGIN</h1>
                 <form onSubmit={handleSubmit}>
-                    <div className={Styles.inputDiv}>
-                        <ImportantLabel name="name" text="NAME"></ImportantLabel>
-                        <input type="text" name="name" value={user.name} onChange={handleChanged} />
-                    </div>
                     <div className={Styles.inputDiv}>
                         <ImportantLabel name="email" text="EMAIL"></ImportantLabel>
                         <input type="email" name="email" value={user.email} onChange={handleChanged} />
@@ -56,20 +50,12 @@ const Register = () => {
                         <input type={show ? "password" : "text"} name="password" value={user.password} onChange={handleChanged} />
                         <p onClick={handlePassword} className={Styles.checkPassword}>{show ? "show" : "hidden"}</p>
                     </div>
-                    <div className={Styles.inputDiv}>
-                        <ImportantLabel name="age" text="AGE"></ImportantLabel>
-                        <input type="text" name="age" value={user.age} onChange={handleChanged} />
-                    </div>
-                    <div className={Styles.inputDiv}>
-                        <ImportantLabel name="mobile" text="MOBILE"></ImportantLabel>
-                        <input type="text" name="mobile" value={user.mobile} onChange={handleChanged} />
-                    </div>
                     <button type="submit" className={Styles.submitBtn}>Submit</button>
                 </form>
-                <p className={Styles.para}>Already have an account?<Link>Login</Link></p>
+                <p className={Styles.para}>Don't have an Account?<Link>Create Now</Link></p>
             </div>
         </div>
     );
 };
 
-export default Register;
+export default Login;

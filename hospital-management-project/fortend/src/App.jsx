@@ -10,6 +10,7 @@ import StandardCabin from "./Pages/StandardCabin"
 import ICU from "./Pages/ICU"
 import OperationCabin from "./Pages/OperationCabin"
 import Register from "./components/Register"
+import Login from "./components/Login"
 
 
 function App() {
@@ -60,6 +61,10 @@ function App() {
         {
           path:"/register",
           element:<Register/>
+        },
+        {
+          path:"/login",
+          element:<Login/>
         }
       ]
     }
