@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from "../assets/smileLogo.png"
 import Styles from "../Styles/Header.module.css"
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone, faSignInAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -23,10 +23,12 @@ const Header = () => {
                 </div>
             </div>
             <div className={Styles.auth}>
-                <div className={Styles.icon}>
-                    <FontAwesomeIcon icon={faUser} style={{ "fontSize": "25px" }} />
-                    <FontAwesomeIcon icon={faSignInAlt} style={{ "fontSize": "20px" }} />
-                </div>
+                <Link to="/register">
+                    <div className={Styles.icon}>
+                        <FontAwesomeIcon icon={faUser} style={{ "fontSize": "25px" }} />
+                        <FontAwesomeIcon icon={faSignInAlt} style={{ "fontSize": "20px" }} />
+                    </div>
+                </Link>
             </div>
         </div>
     )

@@ -1,6 +1,9 @@
 .HelpPart{
     padding-right: 15px;
 }
+.HelpPart a{
+    text-decoration: none;
+}
 .title{
     margin-top: 70px;
     font-family: 'Poppins', sans-serif;

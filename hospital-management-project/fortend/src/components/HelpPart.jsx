@@ -2,6 +2,7 @@ import React from 'react'
 import Styles from "../Styles/HelpPart.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 const HelpPart = () => {
   return (
     <div className={Styles.HelpPart}>
@@ -12,7 +13,7 @@ const HelpPart = () => {
             <FontAwesomeIcon icon={faArrowRight} className={Styles.fontIcon} />
           </div>
           <div>
-            <h1>Find A Doctor</h1>
+            <Link to="/doctors"><h1>Find A Doctor</h1></Link>
             <FontAwesomeIcon icon={faArrowRight} className={Styles.fontIcon} />
           </div>
           <div>
