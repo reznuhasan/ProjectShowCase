@@ -3,6 +3,7 @@ import Styles from "../Styles/Doctor.module.css"
 import niger from "../assets/nigerSultana.jpg"
 import sabina from "../assets/sabina.jpg"
 import jafer from "../assets/jafer.jpg"
+import { Link } from 'react-router-dom'
 const Doctor = () => {
     return (
         <div className={Styles.doctor}>
@@ -19,7 +20,7 @@ const Doctor = () => {
                         <h1 style={{"fontSize":"17px","marginBottom":"20px","marginTop":"35px"}}>Department: Psychiatry</h1>
                     </div>
                     <div className={Styles.doctorButton}>
-                        <button>Set up an appointment</button>
+                        <Link to="/appointment"><button>Set up an appointment</button></Link>
                         <button style={{
                             "marginLeft":"30px"
                         }}>View Doctor Profile</button>

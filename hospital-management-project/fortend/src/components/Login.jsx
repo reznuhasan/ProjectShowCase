@@ -5,12 +5,13 @@ import ImportantLabel from './ImportantLabel';
 import { Link } from 'react-router-dom';
 import { apiURI } from '../utlis/api';
 import { ToastContainer, toast } from 'react-toastify';
-
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const [user, setUser] = useState({
         email: '',
         password: '',
     });
+    const navigate=useNavigate();
     const [show, setShow] = useState("true");
     const handlePassword = (e) => {
         if (show === true) {
@@ -32,9 +33,9 @@ const Login = () => {
         try {
             const response = await apiURI.post("/users/login", user);
             if (response.status === 200) {
-                alert("user login successfully")
                 const token = response.data.token
                 localStorage.setItem('token',token)
+                navigate("/doctors")
             }else{
                 alert("user login failed")
             }

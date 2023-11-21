@@ -3,7 +3,7 @@ import Styles from '../Styles/Register.module.css';
 import ImportantLabel from './ImportantLabel';
 import { Link } from 'react-router-dom';
 import { apiURI } from '../utlis/api';
-
+import { useNavigate } from 'react-router-dom';
 const Register = () => {
     const [user, setUser] = useState({
         name: '',
@@ -12,6 +12,7 @@ const Register = () => {
         age: '',
         mobile: '',
     });
+    const navigate=useNavigate();
     const [show, setShow] = useState("true");
     const handlePassword = (e) => {
         if (show === true) {
@@ -32,7 +33,11 @@ const Register = () => {
         console.log(user);
         try {
             const response = await apiURI.post("/users/register", user);
-            console.log(response.data)
+            if(response.status===200){
+                navigate('/login')
+            }else{
+                alert("create account failed")
+            }
         } catch (error) {
             console.log(error)
         }
@@ -66,7 +71,7 @@ const Register = () => {
                     </div>
                     <button type="submit" className={Styles.submitBtn}>Submit</button>
                 </form>
-                <p className={Styles.para}>Already have an account?<Link>Login</Link></p>
+                <p className={Styles.para}>Already have an account?<Link to="/login">Login</Link></p>
             </div>
         </div>
     );

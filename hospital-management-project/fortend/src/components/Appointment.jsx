@@ -11,6 +11,7 @@ const Appointment = () => {
         gender: '',
         age: '',
         mobile:'',
+        requestFor:"",
     });
     
     const handleChanged = (e) => {
@@ -27,7 +28,7 @@ const Appointment = () => {
     };
 
     return (
-        <div className={Styles.register}>
+        <div className={Styles1.appoinment}>
             <div className={Styles.formContainer}>
                 <h1 className={Styles.title}>Make Appointment</h1>
                 <form onSubmit={handleSubmit}>
@@ -55,6 +56,16 @@ const Appointment = () => {
                     <div className={Styles.inputDiv}>
                         <ImportantLabel name="mobile" text="PATIENT MOBILE"></ImportantLabel>
                         <input type="text" name="mobile" value={patient.mobile} onChange={handleChanged} />
+                    </div>
+                    <div className={Styles.inputDiv}>
+                        <ImportantLabel name="requestFor" text="REQUEST FOR"></ImportantLabel>
+                        <select name="requestFor"  value={patient.requestFor} onChange={handleChanged}>
+                            <option value="">Choose One</option>
+                            <option value="patientConsultation">Patient Consultation</option>
+                            <option value="investigation">Investigation</option>
+                            <option value="healthCheck">Health Check Package</option>
+                            <option value="other">Other</option>
+                        </select>
                     </div>
                     <button type="submit" className={Styles.submitBtn}>Submit</button>
                 </form>
