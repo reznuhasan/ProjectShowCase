@@ -4,6 +4,7 @@ import Styles1 from '../Styles/login.module.css';
 import ImportantLabel from './ImportantLabel';
 import { Link } from 'react-router-dom';
 import { apiURI } from '../utlis/api';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
     const [user, setUser] = useState({
@@ -30,12 +31,18 @@ const Login = () => {
         console.log(user);
         try {
             const response = await apiURI.post("/users/login", user);
-            console.log(response.data)
+            if (response.status === 200) {
+                alert("user login successfully")
+                const token = response.data.token
+                localStorage.setItem('token',token)
+            }else{
+                alert("user login failed")
+            }
         } catch (error) {
-            console.log(error)
+            alert("user login failed")
         }
     };
-
+    
     return (
         <div className={Styles1.login}>
             <div className={Styles.formContainer}>

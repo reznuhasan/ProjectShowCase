@@ -11,6 +11,7 @@ import ICU from "./Pages/ICU"
 import OperationCabin from "./Pages/OperationCabin"
 import Register from "./components/Register"
 import Login from "./components/Login"
+import Appointment from "./components/Appointment"
 
 
 function App() {
@@ -65,6 +66,10 @@ function App() {
         {
           path:"/login",
           element:<Login/>
+        },
+        {
+path:"/appointment",
+element:<Appointment/>
         }
       ]
     }
