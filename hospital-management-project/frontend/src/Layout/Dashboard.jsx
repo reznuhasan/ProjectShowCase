@@ -1,12 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-const Root = () => {
+const Dashboard = () => {
   return (
     <div>
-        <Outlet/>
+      <Outlet/>
     </div>
   )
 }
 
-export default Root
+export default Dashboard

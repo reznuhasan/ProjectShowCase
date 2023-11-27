@@ -3,7 +3,7 @@ import Styles from '../Styles/Register.module.css';
 import ImportantLabel from './ImportantLabel';
 import { apiURI } from '../utlis/api';
 import Styles1 from "../Styles/Appointment.module.css"
-import { months } from '../ConstantData/DatePart';
+import { days, months, years } from '../ConstantData/DatePart';
 
 const Appointment = () => {
     const [patient, setPatient] = useState({
@@ -15,7 +15,9 @@ const Appointment = () => {
         requestFor: "",
         specialtyConsultation: "",
         doctor: "",
-        month:"",
+        month: "",
+        day: "",
+        year: "",
     });
 
     const handleChanged = (e) => {
@@ -95,12 +97,28 @@ const Appointment = () => {
                     </div>
                     <div className={Styles1.appoinmentSchedule}>
                         <ImportantLabel name="" text="Preferred Date and Time for Appointment" />
-                        <div>
+                        <div className={Styles1.datePart}>
                             <select name="month" value={patient.month} onChange={handleChanged} className={Styles1.dateInput}>
-                                <option value="">Choose One</option>
+                                <option value="">MONTH</option>
                                 {
-                                    months.map(month=>(
+                                    months.map(month => (
                                         <option value={month}>{month}</option>
+                                    ))
+                                }
+                            </select>
+                            <select name="day" value={patient.day} onChange={handleChanged} className={Styles1.dateInput}>
+                                <option value="">DAY</option>
+                                {
+                                    days.map(day => (
+                                        <option value={day}>{day}</option>
+                                    ))
+                                }
+                            </select>
+                            <select name="year" value={patient.year} onChange={handleChanged} className={Styles1.dateInput}>
+                                <option value="">YEAR</option>
+                                {
+                                    years.map(year => (
+                                        <option value={year}>{year}</option>
                                     ))
                                 }
                             </select>
