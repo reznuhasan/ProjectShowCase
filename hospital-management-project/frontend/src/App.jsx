@@ -15,6 +15,9 @@ import Appointment from "./components/Appointment"
 import Root from "./Layout/Root"
 import Dashboard from "./Layout/Dashboard"
 import AddDoctor from "./Pages/AddDoctor"
+import Department from "./components/Department"
+import Certification from "./components/Certification"
+import Position from "./components/Position"
 
 
 function App() {
@@ -87,7 +90,20 @@ function App() {
             {
               path:"add-doctor",
               element:<AddDoctor/>
-            }
+            },
+            {
+              path:"add-department",
+              element:<Department/>
+            },
+            {
+              path:"add-certification",
+              element:<Certification/>
+            },
+            {
+              path:"add-position",
+              element:<Position/>
+            },
+            
           ]
         }
       ]
