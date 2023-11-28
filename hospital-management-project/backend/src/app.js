@@ -1,7 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import userRoute from "./routes/user.route.js"
-import phoneRoute from "./routes/phone.route.js"
+import constantRouter from "./routes/constant.route.js"
 import cors from "cors"
 const app=express();
 
@@ -14,8 +13,9 @@ app.use(bodyParser.urlencoded({
     limit:"16mb",
     extended:true
 }))
-app.use('/api/v1/users',userRoute);
-app.use("/api/v1/phone",phoneRoute);
+
+
+app.use(constantRouter);
 app.get('/',(_req,res)=>{
     res.send('server is connected successfully')
 })
