@@ -11,7 +11,8 @@ app.use(bodyParser.json({
 }));
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({
-    limit:"16mb"
+    limit:"16mb",
+    extended:true
 }))
 app.use('/api/v1/users',userRoute);
 app.use("/api/v1/phone",phoneRoute);
