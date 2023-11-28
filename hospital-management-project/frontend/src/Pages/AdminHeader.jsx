@@ -1,8 +1,12 @@
 import React from 'react'
+import { FiAlignJustify } from "react-icons/fi";
 
 const AdminHeader = () => {
   return (
-    <div>AdminHeader</div>
+    <div>
+      <FiAlignJustify />
+
+    </div>
   )
 }
 
