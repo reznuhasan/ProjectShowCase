@@ -7,4 +7,5 @@ const certificationSchema=new Schema({
     }
 })
 
-export const Certification=mongoose.model('certification',certificationSchema);
+const Certification=mongoose.model('certification',certificationSchema);
+export default Certification;

@@ -9,7 +9,7 @@ const addDepartment=async(req,res)=>{
         }
         const department=new Department({name:depName});
         const saveDepartment=await department.save();
-        return res.status(200).json({message:"position insert successfully",saveDepartment})
+        return res.status(200).json({message:"department insert successfully",saveDepartment})
     } catch (error) {
         return res.status(500).json({error:"server side error",error})
     }
@@ -17,7 +17,7 @@ const addDepartment=async(req,res)=>{
 const getAllDepartment=async(req,res)=>{
     try {
         const department=await Department.find();
-        return res.status(200).json({message:"find all position successfully",department})
+        return res.status(200).json({message:"find all department successfully",department})
     } catch (error) {
         return res.status(500).json({error:"server side error",error})
     }
