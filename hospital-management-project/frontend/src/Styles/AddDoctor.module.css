@@ -44,3 +44,16 @@
     padding:12px 0;
     padding-right: 20px;
 }
+.imagePart{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+.imageUpload{
+    width: 210px;
+    height: 210px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import ImportantLabel from '../components/ImportantLabel'
 import Styles from "../Styles/AddDoctor.module.css"
 import Multiselect from 'multiselect-react-dropdown'
+import { times } from '../ConstantData/DatePart'
+import { FaCameraRetro } from "react-icons/fa";
 const AddDoctor = () => {
   const data = [
     'Option 1',
@@ -10,30 +12,52 @@ const AddDoctor = () => {
     'Option 4',
     'Option 5'
   ]
+  const imageRef=useRef(null);
   const [doctor, setDoctor] = useState({
     name: '',
     email: '',
     department: "",
+    position: "",
+    mobile: "",
+    serial: "",
+    startTime: "",
+    finishTime: "",
+    description: "",
   });
   const [certification, setCertification] = useState([])
+  const [profile, setProfile] = useState("")
   const handleChanged = (e) => {
-    setUser((prevState) => ({
+    setDoctor((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
+  
   const handleCertification = (e) => {
     setCertification(e)
+  }
+  const handleImageChanged=(e)=>{
+    setProfile(e.target.files[0])
+  }
+  const handleImageClick=()=>{
+    imageRef.current.click();
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(certification);
+    setProfile(null)
   };
   return (
     <div className={Styles.addDoctor}>
       <div className={Styles.formContainer}>
         <h1 className={Styles.title}>Add Doctors</h1>
         <form onSubmit={handleSubmit}>
+          <div className={Styles.imagePart}>
+            <div className={Styles.imageUpload} onClick={handleImageClick}>
+                {profile?<img src={URL.createObjectURL(profile)}></img>:<h3>Select Doctor Image</h3>}
+                <input type='file' ref={imageRef} onChange={handleImageChanged} style={{display:"none"}}/>
+            </div>
+          </div>
           <div className={Styles.inputDiv}>
             <ImportantLabel name="name" text="Doctor Name"></ImportantLabel>
             <input type="text" name="name" value={doctor.name} onChange={handleChanged} />
@@ -46,7 +70,7 @@ const AddDoctor = () => {
             "margin": "6px 0"
           }}>
             <ImportantLabel name="department" text="Department"></ImportantLabel>
-            <select name="department" value={doctor.requestFor} onChange={handleChanged} className={Styles.selectInput}>
+            <select name="department" value={doctor.department} onChange={handleChanged} className={Styles.selectInput}>
               <option value="">Choose One</option>
             </select>
           </div>
@@ -54,8 +78,55 @@ const AddDoctor = () => {
             "margin": "6px 0"
           }}>
             <ImportantLabel name="certification" text="Certification"></ImportantLabel>
-            <Multiselect options={data} isObject={false} onRemove={handleCertification} onSelect={handleCertification}/>
+            <Multiselect options={data} isObject={false} onRemove={handleCertification} onSelect={handleCertification} />
           </div>
+          <div className={Styles.inputDiv} style={{
+            "margin": "6px 0"
+          }}>
+            <ImportantLabel name="position" text="Position"></ImportantLabel>
+            <select name="position" value={doctor.position} onChange={handleChanged} className={Styles.selectInput}>
+              <option value="">Choose One</option>
+            </select>
+          </div>
+          <div className={Styles.inputDiv} style={{
+            "margin": "6px 0"
+          }}>
+            <ImportantLabel name="startTime" text="Starting Time"></ImportantLabel>
+            <select name="startTime" value={doctor.startTime} onChange={handleChanged} className={Styles.selectInput}>
+              <option value="">Choose One</option>
+              {
+                times.map(time => (
+                  <option value={time}>{time}</option>
+                ))
+              }
+            </select>
+          </div>
+          <div className={Styles.inputDiv} style={{
+            "margin": "6px 0"
+          }}>
+            <ImportantLabel name="finishTime" text="Finishing Time"></ImportantLabel>
+            <select name="finishTime" value={doctor.finishTime} onChange={handleChanged} className={Styles.selectInput}>
+              <option value="">Choose One</option>
+              {
+                times.map(time => (
+                  <option value={time}>{time}</option>
+                ))
+              }
+            </select>
+          </div>
+          <div className={Styles.inputDiv}>
+            <ImportantLabel name="mobile" text="Mobile"></ImportantLabel>
+            <input type="text" name="mobile" value={doctor.mobile} onChange={handleChanged} />
+          </div>
+          <div className={Styles.inputDiv}>
+            <ImportantLabel name="serial" text="Total Serial's No"></ImportantLabel>
+            <input type="text" name="serial" value={doctor.serial} onChange={handleChanged} />
+          </div>
+          <div className={Styles.inputDiv}>
+            <ImportantLabel name="description" text="Doctor's Description"></ImportantLabel>
+            <textarea cols="60" rows="10" name='description' value={doctor.description} onChange={handleChanged} />
+          </div>
+
           <button type="submit" className={Styles.submitBtn}>Submit</button>
         </form>
       </div>
