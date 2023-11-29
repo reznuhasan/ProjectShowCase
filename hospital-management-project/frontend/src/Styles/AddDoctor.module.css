@@ -1,6 +1,10 @@
 .addDoctor{
     width: 100%;
 }
+.addDoctor select{
+    font-size: 15px;
+    color: #826AAC;
+}
 .formContainer{
     width: 700px;
     margin: 30px auto;

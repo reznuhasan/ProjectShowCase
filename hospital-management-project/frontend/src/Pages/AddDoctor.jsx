@@ -1,17 +1,13 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ImportantLabel from '../components/ImportantLabel'
 import Styles from "../Styles/AddDoctor.module.css"
 import Multiselect from 'multiselect-react-dropdown'
 import { times } from '../ConstantData/DatePart'
-import { FaCameraRetro } from "react-icons/fa";
+import { apiURI } from '../utlis/api'
 const AddDoctor = () => {
-  const data = [
-    'Option 1',
-    'Option 2',
-    'Option 3',
-    'Option 4',
-    'Option 5'
-  ]
+  const [departmentData,setDepartmentData]=useState([]);
+  const [certificationData,setCertificationData]=useState([]);
+  const [positionData,setPositionData]=useState();
   const imageRef=useRef(null);
   const [doctor, setDoctor] = useState({
     name: '',
@@ -24,6 +20,27 @@ const AddDoctor = () => {
     finishTime: "",
     description: "",
   });
+
+  //load data start 
+  useEffect(()=>{
+    const loadDepartment=async()=>{
+      const res=await apiURI.get('/doctor/department/');
+      setDepartmentData(res.data.department)
+    }
+    const loadCertification=async()=>{
+      const res=await apiURI.get('/doctor/certification/');
+      const myData=res.data.certification
+      setCertificationData(myData)
+    }
+    const loadPosition=async()=>{
+      const res=await apiURI.get('/doctor/position/');
+      setPositionData(res.data.position)
+    }
+    loadPosition();
+    loadCertification();
+    loadDepartment();
+  },[])
+  //*******load data finish */
   const [certification, setCertification] = useState([])
   const [profile, setProfile] = useState("")
   const handleChanged = (e) => {
@@ -44,7 +61,7 @@ const AddDoctor = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(certification);
+    console.log(certificationData[0])
     setProfile(null)
   };
   return (
@@ -72,14 +89,22 @@ const AddDoctor = () => {
             <ImportantLabel name="department" text="Department"></ImportantLabel>
             <select name="department" value={doctor.department} onChange={handleChanged} className={Styles.selectInput}>
               <option value="">Choose One</option>
+              {
+                departmentData.map(data=>(
+                  <option value={data.name}>{data.name}</option>
+                ))
+
+              }
             </select>
           </div>
+          {/* MultiSelect Certification Part Start */}
           <div className={Styles.inputDiv} style={{
             "margin": "6px 0"
           }}>
             <ImportantLabel name="certification" text="Certification"></ImportantLabel>
-            <Multiselect options={data} isObject={false} onRemove={handleCertification} onSelect={handleCertification} />
+            <Multiselect displayValue='name' options={certificationData} isObject={true} onRemove={handleCertification} onSelect={handleCertification} />
           </div>
+           {/* MultiSelect Certification Part Finish*/}
           <div className={Styles.inputDiv} style={{
             "margin": "6px 0"
           }}>
