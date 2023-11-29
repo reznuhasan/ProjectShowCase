@@ -52,7 +52,6 @@ const AddDoctor = () => {
   
   const handleCertification = (e) => {
     const selectCertification=e.map(element=>element.name)
-    console.log(selectCertification)
     setCertification(selectCertification)
   }
   const handleImageChanged=(e)=>{
@@ -63,7 +62,35 @@ const AddDoctor = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(doctor,certification,profile)
+    const formatData= new FormData()
+    formatData.append('name',doctor.name)
+    formatData.append('email',doctor.email)
+    formatData.append('department',doctor.department)
+    formatData.append('position',doctor.position)
+    formatData.append('mobile',doctor.mobile)
+    formatData.append('serial',doctor.serial)
+    formatData.append('startTime',doctor.startTime)
+    formatData.append('finishTime',doctor.finishTime)
+    formatData.append('description',doctor.description)
+    formatData.append('profile',profile)
+    certification.forEach(element=>{
+      formatData.append(`${element}`,element)
+    })
+    try {
+      const res=await apiURI.post('http://localhost:8000/api/v1/doctor',formatData,{
+        headers:{
+          "Content-Type":"multipart/form-data"
+        }
+      })
+      if(res.status===200){
+        alert("Data Send Successfully")
+      }else{
+        alert("api error")
+      }
+      
+    } catch (error) {
+      alert("something wrong")
+    }
     setProfile(null)
   };
   return (
