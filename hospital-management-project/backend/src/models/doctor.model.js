@@ -5,7 +5,6 @@ const doctorSchema=new Schema({
     name:{
         type:String,
         required:true,
-        unique:[true,"already name taken"],
         trim:true,
         lowercase:true,
         min:[3,'name greater than 3 words'],
@@ -37,10 +36,6 @@ const doctorSchema=new Schema({
         required:true,
         min:[10,'more than 10 digit'],
         max:[15,"less than 15 digit"],
-    },
-    available:{
-        type:String,
-        required:true,
     },
     serial:{
         type:Number,

@@ -5,11 +5,12 @@ cloudinary.config({
     api_key:process.env.CLOUD_KEY,
     api_secret:process.env.CLOUD_SECRET
 })
-const uploadCloudinary=async function(localPath){
+export const uploadCloudinary=async function(localPath){
     try {
         if(!localPath) return "could not find the path";
         const response=await cloudinary.uploader.upload(localPath,{resource_type:'auto'})
-        return response
+        fs.unlinkSync(localPath)
+        return response.url
     } catch (error) {
         fs.unlinkSync(localPath)
         return null;
