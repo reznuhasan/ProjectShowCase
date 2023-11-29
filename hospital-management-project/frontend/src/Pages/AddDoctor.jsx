@@ -8,6 +8,7 @@ const AddDoctor = () => {
   const [departmentData,setDepartmentData]=useState([]);
   const [certificationData,setCertificationData]=useState([]);
   const [positionData,setPositionData]=useState([]);
+  const multiSelect=useRef(null)
   const imageRef=useRef(null);
   const [doctor, setDoctor] = useState({
     name: '',
@@ -73,9 +74,24 @@ const AddDoctor = () => {
     formatData.append('finishTime',doctor.finishTime)
     formatData.append('description',doctor.description)
     formatData.append('profile',profile)
-    certification.forEach(element=>{
-      formatData.append(`${element}`,element)
+    formatData.append('certification',certification)
+    console.log(certification)
+    setProfile(null)
+    setDoctor({
+      name: '',
+      email: '',
+      department: "",
+      position: "",
+      mobile: "",
+      serial: "",
+      startTime: "",
+      finishTime: "",
+      description: "",
     })
+    setCertification([])
+    if(multiSelect.current){
+      multiSelect.current.resetSelectedValues()
+    }
     try {
       const res=await apiURI.post('http://localhost:8000/api/v1/doctor',formatData,{
         headers:{
@@ -91,7 +107,7 @@ const AddDoctor = () => {
     } catch (error) {
       alert("something wrong")
     }
-    setProfile(null)
+ 
   };
   return (
     <div className={Styles.addDoctor}>
@@ -134,7 +150,7 @@ const AddDoctor = () => {
             "margin": "6px 0"
           }}>
             <ImportantLabel name="certification" text="Certification"></ImportantLabel>
-            <Multiselect displayValue='name' options={certificationData} isObject={true} onRemove={handleCertification} onSelect={handleCertification} />
+            <Multiselect ref={multiSelect} displayValue='name' options={certificationData} isObject={true} onRemove={handleCertification} onSelect={handleCertification} />
           </div>
            {/* MultiSelect Certification Part Finish*/}
           <div className={Styles.inputDiv} style={{
