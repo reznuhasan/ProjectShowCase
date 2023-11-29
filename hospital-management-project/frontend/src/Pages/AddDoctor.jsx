@@ -7,7 +7,7 @@ import { apiURI } from '../utlis/api'
 const AddDoctor = () => {
   const [departmentData,setDepartmentData]=useState([]);
   const [certificationData,setCertificationData]=useState([]);
-  const [positionData,setPositionData]=useState();
+  const [positionData,setPositionData]=useState([]);
   const imageRef=useRef(null);
   const [doctor, setDoctor] = useState({
     name: '',
@@ -111,6 +111,12 @@ const AddDoctor = () => {
             <ImportantLabel name="position" text="Position"></ImportantLabel>
             <select name="position" value={doctor.position} onChange={handleChanged} className={Styles.selectInput}>
               <option value="">Choose One</option>
+              {
+                positionData.map(data=>(
+                  <option value={data.name}>{data.name}</option>
+                ))
+
+              }
             </select>
           </div>
           <div className={Styles.inputDiv} style={{
