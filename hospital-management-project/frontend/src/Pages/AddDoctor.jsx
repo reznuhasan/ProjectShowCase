@@ -51,7 +51,9 @@ const AddDoctor = () => {
   };
   
   const handleCertification = (e) => {
-    setCertification(e)
+    const selectCertification=e.map(element=>element.name)
+    console.log(selectCertification)
+    setCertification(selectCertification)
   }
   const handleImageChanged=(e)=>{
     setProfile(e.target.files[0])
@@ -61,7 +63,7 @@ const AddDoctor = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(certificationData[0])
+    // console.log(doctor,certification,profile)
     setProfile(null)
   };
   return (
@@ -69,12 +71,6 @@ const AddDoctor = () => {
       <div className={Styles.formContainer}>
         <h1 className={Styles.title}>Add Doctors</h1>
         <form onSubmit={handleSubmit}>
-          <div className={Styles.imagePart}>
-            <div className={Styles.imageUpload} onClick={handleImageClick}>
-                {profile?<img src={URL.createObjectURL(profile)}></img>:<h3>Select Doctor Image</h3>}
-                <input type='file' ref={imageRef} onChange={handleImageChanged} style={{display:"none"}}/>
-            </div>
-          </div>
           <div className={Styles.inputDiv}>
             <ImportantLabel name="name" text="Doctor Name"></ImportantLabel>
             <input type="text" name="name" value={doctor.name} onChange={handleChanged} />
@@ -83,6 +79,15 @@ const AddDoctor = () => {
             <ImportantLabel name="email" text="Doctor Email"></ImportantLabel>
             <input type="email" name="email" value={doctor.email} onChange={handleChanged} />
           </div>
+          {/* Add Doctor Image Part */}
+          <ImportantLabel name="image" text="Upload's Doctor Image"></ImportantLabel>
+          <div className={Styles.imagePart}>
+            <div className={Styles.imageUpload} onClick={handleImageClick}>
+                {profile?<img src={URL.createObjectURL(profile)}></img>:<h3>Select Doctor Image</h3>}
+                <input type='file' ref={imageRef} onChange={handleImageChanged} style={{display:"none"}}/>
+            </div>
+          </div>
+          {/* Select Doctor Department Part */}
           <div className={Styles.inputDiv} style={{
             "margin": "6px 0"
           }}>
