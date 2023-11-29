@@ -46,13 +46,21 @@ const doctorSchema=new Schema({
         type:Number,
         required:true,
     },
-    doctorImage:{
+    profile:{
         type:String,
         required:true,
     },
     description:{
         type:String,
         required:true,
+    },
+    startTime:{
+        type:String,
+        required:true,
+    },
+    finishTime:{
+        type:String,
+        required:true
     }
 },
 {
@@ -60,6 +68,6 @@ const doctorSchema=new Schema({
 }
 )
 
-const doctorModel=mongoose.model('doctor',doctorSchema);
+const Doctor=mongoose.model('doctor',doctorSchema);
 
-export default doctorModel;
+export default Doctor;

@@ -4,8 +4,8 @@ const addDepartment=async(req,res)=>{
     try {
        const depName=req.body.name
         const dep=await Department.findOne({name:depName});
-        if(dep){
-            return res.status(400).json({error:"this department already available"})
+        if(dep!==null){
+            return res.status(403).json({error:"this department already available"})
         }
         const department=new Department({name:depName});
         const saveDepartment=await department.save();
