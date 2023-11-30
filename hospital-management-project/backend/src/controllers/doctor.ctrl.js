@@ -62,4 +62,17 @@ const searchByDepartment=async(req,res)=>{
         return res.status(500).json({"error":"server side error"},error)
     }  
 }
-export {addDoctor,getAllDoctor,searchByDepartment}
+const searchByName=async(req,res)=>{
+    try {
+        const { name } = req.query; 
+        const allDoctors=await Doctor.find()
+        const doctor=allDoctors.filter(d=>(d.name).toLowerCase().includes(name.toLowerCase()))
+        if(!doctor){
+           return res.status(400).json({"error":"doctor not found",doctor})
+        }
+        return res.status(200).json({"message":"find doctor successfully",doctor})
+    } catch (error) {
+        return res.status(500).json({"error":"server side error"},error)
+    }  
+}
+export {addDoctor,getAllDoctor,searchByDepartment,searchByName}
