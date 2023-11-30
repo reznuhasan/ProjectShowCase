@@ -1,12 +1,10 @@
 import express from "express"
-import { addDoctor } from "../controllers/doctor.ctrl.js";
+import { addDoctor, getAllDoctor, searchByDepartment } from "../controllers/doctor.ctrl.js";
 import { upload } from "../middleware/MulterUpload.js";
 
 const router=express.Router();
-
+router.get("/:department",searchByDepartment);
 router.post("/",upload.single('profile'),addDoctor)
-router.get('/',(req,res)=>{
-    res.send("get all doctor")
-})
+router.get('/all',getAllDoctor)
 
 export default router;

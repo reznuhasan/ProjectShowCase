@@ -36,8 +36,30 @@ const addDoctor=async(req,res)=>{
         const savedDoctor=await doctor.save();
         return res.status(200).json({"message":"doctor add successfully",savedDoctor})
     } catch (error) {
-        return res.status(400).json({"error":"server side error"},error)
+        return res.status(500).json({"error":"server side error"},error)
     }
 }
-
-export {addDoctor}
+const getAllDoctor=async(req,res)=>{
+    try {
+        const allDoctor=await Doctor.find();
+        if(!allDoctor){
+           return res.status(400).json({"error":"doctor not found",allDoctor})
+        }
+        return res.status(200).json({"message":"find doctor successfully",allDoctor})
+    } catch (error) {
+        return res.status(500).json({"error":"server side error"},error)
+    }   
+}
+const searchByDepartment=async(req,res)=>{
+    try {
+        
+        const allDoctor=await Doctor.find({department:req.params.department});
+        if(!allDoctor){
+           return res.status(400).json({"error":"doctor not found",allDoctor})
+        }
+        return res.status(200).json({"message":"find doctor successfully",allDoctor})
+    } catch (error) {
+        return res.status(500).json({"error":"server side error"},error)
+    }  
+}
+export {addDoctor,getAllDoctor,searchByDepartment}
