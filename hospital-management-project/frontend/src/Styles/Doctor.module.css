@@ -1,4 +1,6 @@
-
+.doctor{
+    width: 80%;
+}
 .doctorContentBox{
     display: flex;
     width: 800px;

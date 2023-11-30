@@ -1,14 +1,14 @@
 import React from 'react'
 import DoctorSearch from '../components/DoctorSearch'
-import Doctor from '../components/Doctor'
+import Doctors from '../components/Doctors'
 import Styles from "../Styles/Doctors.module.css"
-const Doctors = () => {
+const DoctorPage = () => {
   return (
     <div className={Styles.doctors}>
       <DoctorSearch/>
-      <Doctor/>
+      <Doctors/>
     </div>
   )
 }
 
-export default Doctors
+export default DoctorPage

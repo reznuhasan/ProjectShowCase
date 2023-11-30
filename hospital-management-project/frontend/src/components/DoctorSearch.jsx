@@ -1,12 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Styles from "../Styles/DoctorSearch.module.css"
+import { apiURI } from '../utlis/api';
 const DoctorSearch = () => {
    const [doctor, setDoctor] = useState("");
    const [specialty, setSpecialty] = useState("");
+   const [departmentData,setDepartmentData]=useState([])
+
+   useEffect(()=>{
+      const loadDepartment=async()=>{
+         const res=await apiURI.get('/doctor/department/')
+         if(res.status===200){
+            setDepartmentData(res.data.department)
+         }
+      }
+      loadDepartment()
+   },[])
    const handleSpecialty = (e) => {
       e.preventDefault();
-      console.log(specialty)
-      setDoctor("")
+      
    }
    const hanldeDoctor = (e) => {
       e.preventDefault()
@@ -20,10 +31,12 @@ const DoctorSearch = () => {
                <h2>Department</h2>
                <select name="department" onChange={(e) => setSpecialty(e.target.value)} id="">
                   <option value="">Select Specialty</option>
-                  <option value="a">a</option>
-                  <option value="b">b</option>
-                  <option value="c">c</option>
-                  <option value="d">d</option>
+                  {
+                     
+                     departmentData && departmentData.map(element=>(
+                        <option value={element.name}>{element.name}</option>
+                     ))
+                  }
                </select>
                <button onClick={handleSpecialty}>Request</button>
             </div>

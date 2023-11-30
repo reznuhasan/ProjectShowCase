@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import User from "./Layout/User"
 import Home from "./Pages/Home"
-import Doctors from "./Pages/Doctors"
+import Doctors from "./Pages/DoctorPage"
 import DoctorProfile from "./Pages/DoctorProfile"
 import About from "./Pages/About"
 import Cabins from "./Pages/Cabins"
@@ -18,6 +18,7 @@ import AddDoctor from "./Pages/AddDoctor"
 import Department from "./components/Department"
 import Certification from "./components/Certification"
 import Position from "./components/Position"
+import DoctorPage from "./Pages/DoctorPage"
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
             },
             {
               path: "/doctors",
-              element: <Doctors />
+              element: <DoctorPage />
             },
             {
               path: "/doctor-profile",

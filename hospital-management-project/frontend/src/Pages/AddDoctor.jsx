@@ -75,7 +75,6 @@ const AddDoctor = () => {
     formatData.append('description',doctor.description)
     formatData.append('profile',profile)
     formatData.append('certification',certification)
-    console.log(certification)
     setProfile(null)
     setDoctor({
       name: '',
