@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Styles from "../Styles/DoctorSearch.module.css"
 import { apiURI } from '../utlis/api';
+import { doctorData } from '../useHooks/DoctorDataProvider';
 const DoctorSearch = () => {
    const [doctor, setDoctor] = useState("");
    const [specialty, setSpecialty] = useState("");
    const [departmentData,setDepartmentData]=useState([])
+   const {doctors,setDoctors}=useContext(doctorData)
 
    useEffect(()=>{
       const loadDepartment=async()=>{
@@ -15,14 +17,23 @@ const DoctorSearch = () => {
       }
       loadDepartment()
    },[])
-   const handleSpecialty = (e) => {
+   const handleSpecialty = async(e) => {
       e.preventDefault();
-      
+      try {
+        const res=await apiURI.get(`/doctor/${specialty}`) 
+        setDoctors(res.data.allDoctor)
+      } catch (error) {
+         alert("something wrong")
+      }
    }
-   const hanldeDoctor = (e) => {
+   const hanldeDoctor =async (e) => {
       e.preventDefault()
-      console.log(doctor)
-      setSpecialty("Select Specialty")
+      try {
+         const res=await apiURI.get(`/doctor/search/?name=${doctor}`) 
+         setDoctors(res.data.doctor)
+       } catch (error) {
+          alert("something wrong")
+       }
    }
    return (
       <div className={Styles.doctorSearch}>
