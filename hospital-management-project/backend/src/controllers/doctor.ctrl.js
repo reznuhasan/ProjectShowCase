@@ -75,4 +75,20 @@ const searchByName=async(req,res)=>{
         return res.status(500).json({"error":"server side error"},error)
     }  
 }
-export {addDoctor,getAllDoctor,searchByDepartment,searchByName}
+const singleDoctor=async(req,res)=>{
+    try {
+        const {id} =req.query;
+        if(id===undefined){
+            return res.status(404).json({"message":"no doctor found"})
+        }
+        const doctor=await Doctor.findById({_id:id})
+        if(!doctor){
+            return res.status(404).json({"message":"invalid doctor id"})
+        }
+        return res.status(200).json({"message":"find doctor successfully",doctor})
+    } catch (error) {
+        return res.status(500).json({"error":"server side error"},error)
+
+    }
+}
+export {addDoctor,getAllDoctor,searchByDepartment,searchByName,singleDoctor}
