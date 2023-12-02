@@ -39,8 +39,12 @@ function App() {
               element: <DoctorPage />
             },
             {
-              path: "/doctor-profile",
+              path: "/doctors/:_id",
               element: <DoctorProfile />
+            },
+            {
+              path:"/appointment/:_id",
+              element: <Appointment/>
             },
             {
               path: "about",
@@ -76,10 +80,6 @@ function App() {
             {
               path: "/login",
               element: <Login />
-            },
-            {
-              path: "/appointment",
-              element: <Appointment />
             }
           ]
         },

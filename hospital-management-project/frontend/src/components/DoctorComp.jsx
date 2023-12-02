@@ -2,7 +2,7 @@ import React from 'react'
 import Styles from "../Styles/Doctor.module.css"
 import { Link } from 'react-router-dom'
 const DoctorComp = ({doctor}) => {
-    const {certification,department,name,profile,position}=doctor
+    const {certification,department,name,profile,position,_id}=doctor
     return (
         <div className={Styles.doctorContentBox}>
             <div>
@@ -19,9 +19,11 @@ const DoctorComp = ({doctor}) => {
                 </div>
                 <div className={Styles.doctorButton}>
                     <Link to="/appointment"><button>Set up an appointment</button></Link>
+                    <Link to={`/doctors/${_id}`}>
                     <button style={{
                         "marginLeft": "30px"
                     }}>View Doctor Profile</button>
+                    </Link>
                 </div>
             </div>
         </div>
