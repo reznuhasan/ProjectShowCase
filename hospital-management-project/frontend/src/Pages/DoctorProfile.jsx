@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Styles from "../Styles/DoctorProfile.module.css"
 import jafer from "../assets/jafer.jpg"
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { apiURI } from '../utlis/api'
 const DoctorProfile = () => {
     const [searchId,setSearchId]=useState()
@@ -33,7 +33,7 @@ const DoctorProfile = () => {
                         <h1 style={{ "fontSize": "15px", "marginBottom": "20px", "marginTop": "35px" }}>Department: {department}</h1>
                     </div>
                     <div className={Styles.doctorButton}>
-                        <button>Set up an appointment</button>
+                       <Link to={`/appointment/${doctorData._id}`} ><button>Set up an appointment</button></Link>
                     </div>
                 </div>
             </div>

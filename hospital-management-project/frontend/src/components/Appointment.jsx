@@ -4,6 +4,7 @@ import ImportantLabel from './ImportantLabel';
 import { apiURI } from '../utlis/api';
 import Styles1 from "../Styles/Appointment.module.css"
 import { days, months, years } from '../ConstantData/DatePart';
+import { useParams } from 'react-router-dom';
 
 const Appointment = () => {
     const [patient, setPatient] = useState({
@@ -19,7 +20,8 @@ const Appointment = () => {
         day: "",
         year: "",
     });
-
+    const {_id}=useParams()
+    console.log(_id)
     const handleChanged = (e) => {
         setPatient((prevState) => ({
             ...prevState,

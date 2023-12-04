@@ -10,15 +10,15 @@ const DoctorComp = ({doctor}) => {
             </div>
             <div className={Styles.doctorContent}>
                 <div className={Styles.doctorDetails}>
-                    <h1>{name}</h1>
-                    <p>{certification[0]},{certification[1]},{certification[3]}</p>
+                    <h1>{name.toUpperCase()}</h1>
+                    <p>{certification.map(certificate=>certificate)}</p>
                     <h2>{position}</h2>
                 </div>
                 <div>
                     <h1 style={{ "fontSize": "17px", "marginBottom": "20px", "marginTop": "35px" }}>Department: {department}</h1>
                 </div>
                 <div className={Styles.doctorButton}>
-                    <Link to="/appointment"><button>Set up an appointment</button></Link>
+                    <Link to={`/appointment/${_id}`}><button>Set up an appointment</button></Link>
                     <Link to={`/doctors/${_id}`}>
                     <button style={{
                         "marginLeft": "30px"

@@ -19,6 +19,7 @@ const DoctorSearch = () => {
    },[])
    const handleSpecialty = async(e) => {
       e.preventDefault();
+      setDoctor("")
       try {
         const res=await apiURI.get(`/doctor/${specialty}`) 
         setDoctors(res.data.allDoctor)
@@ -28,6 +29,7 @@ const DoctorSearch = () => {
    }
    const hanldeDoctor =async (e) => {
       e.preventDefault()
+      setSpecialty("")
       try {
          const res=await apiURI.get(`/doctor/search/?name=${doctor}`) 
          setDoctors(res.data.doctor)
@@ -43,7 +45,6 @@ const DoctorSearch = () => {
                <select name="department" onChange={(e) => setSpecialty(e.target.value)} id="">
                   <option value="">Select Specialty</option>
                   {
-                     
                      departmentData && departmentData.map(element=>(
                         <option value={element.name}>{element.name}</option>
                      ))
