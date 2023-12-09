@@ -19,12 +19,10 @@ const loginUser=async(req,res)=>{
     try {
         const email=req.body.email
         const checkUser=await User.findOne({email:email});
-        console.log(checkUser)
         if(!checkUser){
            return res.status(401).json({error:"user not find"})
         }
         const validPassword=await checkUser.isPasswordCorrect(req.body.password)
-        console.log(validPassword)
         if(validPassword===false){
            return res.status(401).json({error:"password is not correct"})
         }
