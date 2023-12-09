@@ -32,5 +32,20 @@ const loginUser=async(req,res)=>{
        return res.status(400).json({"error":"Authentication Error"})
     }
 }
-
-export {createUser,loginUser};
+const uploadReport=async(req,res)=>{
+   try {
+    const {profileUrl,email}=req.body
+     const user=await User.findOne({email});
+     console.log(user)
+     if(!user){
+      res.status(400).json({error:"user not found"})
+     }
+     user.reports.push(profileUrl);
+     await user.save();
+     return res.status(200).json({"message":"user report upload successfully"})
+  } catch (error) {
+   console.error(error);
+   return res.status(500).json({ error: "Internal Server Error" });
+  }
+}
+export {createUser,loginUser,uploadReport};
