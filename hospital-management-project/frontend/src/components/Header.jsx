@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import logo from "../assets/smileLogo.png"
 import Styles from "../Styles/Header.module.css"
 import { Link, NavLink } from 'react-router-dom'
@@ -7,12 +7,25 @@ import { faPhone, faSignInAlt, faUser } from '@fortawesome/free-solid-svg-icons'
 import defaultImage from "../assets/defaultImage.png"
 import { checkUser } from '../customHook/userHook'
 import { authProvider } from '../useHooks/UserAuthProvider'
+import { useNavigate } from 'react-router-dom'
 
 
 const Header = () => {
-    const {user,userName,logout}=useContext(authProvider);
+    const {user,userName,logout,login}=useContext(authProvider);
+    useEffect(()=>{
+        const loadData=()=>{
+          const userCheck=checkUser()
+          if(userCheck===true){
+            const token=localStorage.getItem("token");
+            login(token)
+          }
+        }
+        loadData();
+    },[])
+    const navigate=useNavigate();
     const handleLogout=()=>{
         logout()
+        navigate("/login")
     }
     return (
         <div className={Styles.container}>
@@ -43,7 +56,7 @@ const Header = () => {
                                 <img src={defaultImage} alt="" />
                             </div>      
                             <div className={Styles.dropdownMenu}>
-                              <NavLink>Changed Profile</NavLink>
+                              <NavLink>Change Profile</NavLink>
                               <NavLink>Upload Report</NavLink>
                               <NavLink>Show Report</NavLink>
                               <button className={Styles.logout} onClick={handleLogout}>Logout</button>
