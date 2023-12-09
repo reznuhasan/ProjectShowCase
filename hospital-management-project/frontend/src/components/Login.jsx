@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Styles from "../Styles/Register.module.css";
 import Styles1 from "../Styles/login.module.css";
 import ImportantLabel from "./ImportantLabel";
@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { apiURI } from "../utlis/api";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { authProvider } from "../useHooks/UserAuthProvider";
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
@@ -26,7 +27,7 @@ const Login = () => {
       [e.target.name]: e.target.value,
     }));
   };
-
+  const {setUserAuth}=useContext(authProvider)
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -34,7 +35,6 @@ const Login = () => {
       console.log(typeof response.status);
       if (response.status === 200) {
         const token = response.data.token;
-        console.log(token);
         localStorage.setItem("token", token);
         const decodeToken = jwtDecode(token);
         if (decodeToken.role === "user") {

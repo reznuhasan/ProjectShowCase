@@ -5,6 +5,7 @@
     border-bottom: 1px solid gray;
     padding-bottom: 30px;
     background-color: #FFFFFF;
+    position: relative;
 }
 .header{
     display: flex;
@@ -39,4 +40,17 @@
 .icon{
     padding-right: 25px;
     color: blue;
+}
+.userProfile{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid blue;
+    position: absolute;
+    right: 20px;
+    top:40px;
+}
+.userProfile img{
+    width: 100%;
+    height: 100%;
 }
