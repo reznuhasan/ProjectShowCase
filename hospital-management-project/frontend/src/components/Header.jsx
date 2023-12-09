@@ -56,8 +56,8 @@ const Header = () => {
                                 <img src={defaultImage} alt="" />
                             </div>      
                             <div className={Styles.dropdownMenu}>
-                              <NavLink>Change Profile</NavLink>
-                              <NavLink>Upload Report</NavLink>
+                              <NavLink >Change Profile</NavLink>
+                              <NavLink to="/upload-report">Upload Report</NavLink>
                               <NavLink>Show Report</NavLink>
                               <button className={Styles.logout} onClick={handleLogout}>Logout</button>
                             </div>

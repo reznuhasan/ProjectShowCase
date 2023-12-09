@@ -18,6 +18,7 @@ import Department from "./components/Department"
 import Certification from "./components/Certification"
 import Position from "./components/Position"
 import DoctorPage from "./Pages/DoctorPage"
+import UploadReport from "./components/UploadReport"
 
 
 function App() {
@@ -49,6 +50,10 @@ function App() {
             {
               path: "about",
               element: <About />
+            },
+            {
+              path:"upload-report",
+              element:<UploadReport/>
             },
             {
               path: "cabins",
