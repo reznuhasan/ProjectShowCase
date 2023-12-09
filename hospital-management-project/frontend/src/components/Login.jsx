@@ -12,6 +12,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const { login } = useContext(authProvider);
   const navigate = useNavigate();
   const [show, setShow] = useState("true");
   const handlePassword = () => {
@@ -27,7 +28,7 @@ const Login = () => {
       [e.target.name]: e.target.value,
     }));
   };
-  const {setUserAuth}=useContext(authProvider)
+  const { setUserAuth } = useContext(authProvider)
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -35,13 +36,16 @@ const Login = () => {
       console.log(typeof response.status);
       if (response.status === 200) {
         const token = response.data.token;
-        localStorage.setItem("token", token);
-        const decodeToken = jwtDecode(token);
-        if (decodeToken.role === "user") {
-          navigate("/doctors");
-        }else if(decodeToken.role === "admin"){
+        if (token) {
+          const decodeToken = jwtDecode(token);
+          login(token);
+          if (decodeToken.role === "user") {
+            navigate("/doctors");
+          } else if (decodeToken.role === "admin") {
             navigate("/dashboard")
+          }
         }
+
       } else {
         alert("user login failed");
       }

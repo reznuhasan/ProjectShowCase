@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import logo from "../assets/smileLogo.png"
 import Styles from "../Styles/Header.module.css"
 import { Link, NavLink } from 'react-router-dom'
@@ -6,11 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone, faSignInAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import defaultImage from "../assets/defaultImage.png"
 import { checkUser } from '../customHook/userHook'
-import { FaOsi } from 'react-icons/fa6'
+import { authProvider } from '../useHooks/UserAuthProvider'
 
 
 const Header = () => {
-    const user=checkUser();
+    const {user,userName,logout}=useContext(authProvider);
+    const handleLogout=()=>{
+        logout()
+    }
     return (
         <div className={Styles.container}>
             <div className={Styles.header}>
@@ -29,15 +32,24 @@ const Header = () => {
             </div>
             <div className={Styles.auth}>
                 {
-                    (user===false)?<Link to="/register">
-                    <div className={Styles.icon}>
-                        <FontAwesomeIcon icon={faUser} style={{ "fontSize": "25px" }} />
-                        <FontAwesomeIcon icon={faSignInAlt} style={{ "fontSize": "20px" }} />
-                    </div>
-                </Link>:
-                <div className={Styles.userProfile}>
-                   <img src={defaultImage} alt="" />
-                </div>
+                    (user === null) ? <Link to="/login">
+                        <div className={Styles.icon}>
+                            <FontAwesomeIcon icon={faUser} style={{ "fontSize": "25px" }} />
+                            <FontAwesomeIcon icon={faSignInAlt} style={{ "fontSize": "20px" }} />
+                        </div>
+                    </Link> :
+                        <div className={Styles.userProfile}>
+                            <div className={Styles.profileCircle}>
+                                <img src={defaultImage} alt="" />
+                            </div>      
+                            <div className={Styles.dropdownMenu}>
+                              <NavLink>Changed Profile</NavLink>
+                              <NavLink>Upload Report</NavLink>
+                              <NavLink>Show Report</NavLink>
+                              <button className={Styles.logout} onClick={handleLogout}>Logout</button>
+                            </div>
+                            <p>{userName}</p>
+                        </div>
                 }
             </div>
         </div>
