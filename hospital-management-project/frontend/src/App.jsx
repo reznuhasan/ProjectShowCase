@@ -19,6 +19,7 @@ import Certification from "./components/Certification"
 import Position from "./components/Position"
 import DoctorPage from "./Pages/DoctorPage"
 import UploadReport from "./components/UploadReport"
+import ErrorPage from "./Pages/ErrorPage"
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
     {
       path: "/",
       element: <Root />,
+      errorElement:<ErrorPage/>,
       children: [
         {
           path: "/",
