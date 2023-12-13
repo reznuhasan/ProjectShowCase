@@ -78,6 +78,7 @@ const searchByName=async(req,res)=>{
 const singleDoctor=async(req,res)=>{
     try {
         const {id} =req.query;
+        console.log(id)
         if(id===undefined){
             return res.status(404).json({"message":"no doctor found"})
         }
