@@ -85,7 +85,7 @@ const Login = () => {
           </button>
         </form>
         <p className={Styles.para}>
-          Don't have an Account?<Link>Create Now</Link>
+          Don't have an Account?<Link to="/register">Create Now</Link>
         </p>
       </div>
     </div>
