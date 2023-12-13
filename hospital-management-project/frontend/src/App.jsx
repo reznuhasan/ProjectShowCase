@@ -46,6 +46,10 @@ function App() {
               element: <DoctorProfile />
             },
             {
+              path:"/appointment",
+              element: <Appointment/>
+            },
+            {
               path:"/appointment/:_id",
               element: <Appointment/>
             },
