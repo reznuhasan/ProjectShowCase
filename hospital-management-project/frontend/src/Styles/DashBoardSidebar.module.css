@@ -1,0 +1,19 @@
+.dashboardSidebar{
+    width:20%;
+    height: 100vh;
+    background-color:#283747;
+}
+a{
+    text-decoration:none;
+}
+.dashboardNav{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+}
+.dashboardNav a{
+    color:white;
+    padding-left:20px;
+}

@@ -20,6 +20,7 @@ import Position from "./components/Position"
 import DoctorPage from "./Pages/DoctorPage"
 import UploadReport from "./components/UploadReport"
 import ErrorPage from "./Pages/ErrorPage"
+import DashBoardHome from "./components/DashBoardHome"
 
 
 function App() {
@@ -98,6 +99,10 @@ function App() {
           path:"/dashboard",
           element:<Dashboard/>,
           children:[
+            {
+              path:"",
+              element: <DashBoardHome/>
+            },
             {
               path:"add-doctor",
               element:<AddDoctor/>
