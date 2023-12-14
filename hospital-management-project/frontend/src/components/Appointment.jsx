@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import Styles from "../Styles/Register.module.css";
 import ImportantLabel from "./ImportantLabel";
 import { apiURI } from "../utlis/api";
@@ -82,20 +82,20 @@ const Appointment = () => {
         alert("something went wrong")
       }
     }
-    // setPatient({
-    //   name: "",
-    //   email: "",
-    //   gender: "",
-    //   age: "",
-    //   mobile: "",
-    //   requestFor: "",
-    //   specialtyConsultation: "",
-    //   doctor: "",
-    //   month: "",
-    //   date: "",
-    //   day: "",
-    //   year: "",
-    // })
+    setPatient({
+      name: "",
+      email: "",
+      gender: "",
+      age: "",
+      mobile: "",
+      requestFor: "",
+      specialtyConsultation: "",
+      doctor: "",
+      month: "",
+      date: "",
+      day: "",
+      year: "",
+    })
   };
 
   return (
