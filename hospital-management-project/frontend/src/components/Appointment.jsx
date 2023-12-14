@@ -4,11 +4,12 @@ import ImportantLabel from "./ImportantLabel";
 import { apiURI } from "../utlis/api";
 import Styles1 from "../Styles/Appointment.module.css";
 import { dates, days, months, years } from "../ConstantData/DatePart";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Appointment = () => {
   const [doctorDepartmentInfo, setDoctorDepartmentInfo] = useState([]);
   const [doctorNameInfo,setDoctorNameInfo]=useState([]);
+  const navigate=useNavigate();
   const [patient, setPatient] = useState({
     name: "",
     email: "",
@@ -69,25 +70,32 @@ const Appointment = () => {
       const res=await apiURI.post(`http://localhost:8000/api/v1/user/appointment/`,patient);
       if(res.status===200){
         alert("your request submit")
+        navigate("/");
+      }else if(res.status===409){
+        alert("already a appointment request submit")
       }
     } catch (error) {
       console.log(error)
-      alert("something went wrong")
+      if(error.response.status===409){
+        alert("already a appointment request submit")
+      }else{
+        alert("something went wrong")
+      }
     }
-    setPatient({
-      name: "",
-      email: "",
-      gender: "",
-      age: "",
-      mobile: "",
-      requestFor: "",
-      specialtyConsultation: "",
-      doctor: "",
-      month: "",
-      date: "",
-      day: "",
-      year: "",
-    })
+    // setPatient({
+    //   name: "",
+    //   email: "",
+    //   gender: "",
+    //   age: "",
+    //   mobile: "",
+    //   requestFor: "",
+    //   specialtyConsultation: "",
+    //   doctor: "",
+    //   month: "",
+    //   date: "",
+    //   day: "",
+    //   year: "",
+    // })
   };
 
   return (
