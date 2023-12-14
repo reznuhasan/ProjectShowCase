@@ -65,7 +65,29 @@ const Appointment = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(patient);
+    try {
+      const res=await apiURI.post(`http://localhost:8000/api/v1/user/appointment/`,patient);
+      if(res.status===200){
+        alert("your request submit")
+      }
+    } catch (error) {
+      console.log(error)
+      alert("something went wrong")
+    }
+    setPatient({
+      name: "",
+      email: "",
+      gender: "",
+      age: "",
+      mobile: "",
+      requestFor: "",
+      specialtyConsultation: "",
+      doctor: "",
+      month: "",
+      date: "",
+      day: "",
+      year: "",
+    })
   };
 
   return (
