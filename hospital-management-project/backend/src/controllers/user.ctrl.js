@@ -48,4 +48,12 @@ const uploadReport=async(req,res)=>{
    return res.status(500).json({ error: "Internal Server Error" });
   }
 }
-export {createUser,loginUser,uploadReport};
+const getAllUser=async (req, res)=>{
+   try {
+      const user = await User.find();
+      return res.status(200).json({"message":"all user find successfully",user})
+   } catch (error) {
+      return res.status(500).json({ error: "Internal Server Error" });
+   }
+}
+export {createUser,loginUser,uploadReport,getAllUser};
