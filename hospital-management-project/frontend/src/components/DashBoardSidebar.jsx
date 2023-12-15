@@ -1,14 +1,29 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Styles from "../Styles/DashBoardSidebar.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const DashBoardSidebar = () => {
   const [doctorStyle, setDoctorStyle] = useState("none");
+  const location=useLocation();
+  const doctorRoutes = [
+   "/dashboard/doctor",
+   "/dashboard/add-doctor",
+   "/dashboard/add-department",
+   "/dashboard/add-certification",
+   "/dashboard/add-position",
+ ];
+  useEffect(()=>{
+   const isRoute=doctorRoutes.some(route=>location.pathname.startsWith(route))
+   console.log(isRoute)
+   setDoctorStyle(isRoute?"block":"none")
+},[location.pathname])
   const handleMouseEnter = () => {
     setDoctorStyle("block");
   };
   const handleMouseLeave = () => {
-    setDoctorStyle("none");
-  };
+   if (!doctorRoutes.some(route => location.pathname.startsWith(route))) {
+      setDoctorStyle("none");
+    }
+     };
   return (
     <div className={Styles.dashboardSidebar}>
       <div className={Styles.dashboardNav}>
@@ -18,7 +33,7 @@ const DashBoardSidebar = () => {
       onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
       >
         <div >
-          <NavLink to="/dashboard/doctor">Doctor</NavLink>
+          <NavLink>Doctor</NavLink>
         </div>
         <div
           className={Styles.doctorDropdownMenu}
