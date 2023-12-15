@@ -32,15 +32,15 @@ const DashBoardHome = () => {
     <div className={Styles.dashboardHome}>
       <div className={Styles.box}>
           <h3>Appointments</h3>
-          <h2>00{appointments}</h2>
+          <h2>{appointments}</h2>
       </div>
       <div className={Styles.box}>
           <h3>Doctors</h3>
-          <h2>00{doctors}</h2>
+          <h2>{doctors}</h2>
       </div>
       <div className={Styles.box}>
           <h3>Users</h3>
-          <h2>00{users}</h2>
+          <h2>{users}</h2>
       </div>
     </div>
   )
