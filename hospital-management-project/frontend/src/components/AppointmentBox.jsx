@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { apiURI } from "../utlis/api";
 import Styles from "../Styles/AppointmentBox.module.css";
 const AppointmentBox = ({ appointment }) => {
@@ -13,7 +13,7 @@ const AppointmentBox = ({ appointment }) => {
     specialtyConsultation,
     _id,
   } = appointment;
-  const [newStatus,setNewStatus] = useState(status);
+  const [newStatus, setNewStatus] = useState(status);
   useEffect(() => {
     if (doctor) {
       const loadData = async () => {
@@ -27,13 +27,14 @@ const AppointmentBox = ({ appointment }) => {
     try {
       const user = {
         id: _id,
-        doctorName:doctor,
+        doctorName: doctor,
       };
       const res = await apiURI.patch(`/user/appointment/update`, user);
       if (res.status === 200) {
         alert("approved successfully");
-        console.log(res.data.savedAppointment.status)
-        setNewStatus(res.data.savedAppointment.status)
+        console.log(res.data.savedAppointment.status);
+        setNewStatus(res.data.savedAppointment.status);
+        setSerial(serial-1)
       }
     } catch (error) {
       console.log(error);
@@ -51,12 +52,7 @@ const AppointmentBox = ({ appointment }) => {
         <h1 className={Styles.patientName}>Patient:{name}</h1>
       </div>
       <div>
-        {
-            (status==="approve")?
-            <h2>Available:{serial-1}</h2>
-             :
-             <h2>Available:{serial}</h2>
-        }
+        <h2>Available:{serial}</h2>
       </div>
       <div className={Styles.times}>
         <p>Date:{date}</p>
@@ -67,7 +63,7 @@ const AppointmentBox = ({ appointment }) => {
         <p>Status:{newStatus}</p>
       </div>
 
-      {newStatus=== "approve" ? (
+      {newStatus === "approve" ? (
         <div>
           <button className={Styles.deleteBtn}>Delete</button>
           <button className={Styles.SeeMore}>See More...</button>
