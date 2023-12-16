@@ -1,5 +1,7 @@
 .dashboardSidebar{
     width:20%;
+    min-height: 100vh;
+    height: auto;
     background-color:#283747;
 }
 a{
@@ -16,21 +18,21 @@ a{
     color:white;
     padding-left:20px;
 }
-.doctorDropdownMenu{
+.dashboardDropdownMenu{
     flex-direction:column;
     padding-left: 50px;
 }
-.doctorDropdownMenuNav{
+.dashboardDropdownMenuNav{
     margin-top:10px;
 }
-.doctorDropdownCircle{
+.dashboardDropdownCircle{
     width:10px;
     height: 10px;
     border:2px solid hsl(0, 0%, 80%);
     border-radius:50%;
     margin-bottom: -13px;
 }
-.doctorDropdownMenu a{
+.dashboardDropdownMenu a{
     font-size:14px;
     color: aqua;
 }

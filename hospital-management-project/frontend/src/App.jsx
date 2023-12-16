@@ -21,6 +21,7 @@ import DoctorPage from "./Pages/DoctorPage"
 import UploadReport from "./components/UploadReport"
 import ErrorPage from "./Pages/ErrorPage"
 import DashBoardHome from "./components/DashBoardHome"
+import DashBoardAppointment from "./components/DashBoardAppointment"
 
 
 function App() {
@@ -119,6 +120,16 @@ function App() {
               path:"add-position",
               element:<Position/>
             },
+            {
+              path:"appointment",
+              element:<DashBoardAppointment/>
+            },
+            {
+              path:"appointment/pending",
+            },
+            {
+              path:"appointment/approved",
+            }
             
           ]
         }
