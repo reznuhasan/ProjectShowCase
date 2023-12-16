@@ -1,0 +1,56 @@
+
+.loginComponent{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom,#439cfb,#f187fb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formPart{
+    background-color: white;
+    padding: 40px 35px;
+    text-align: center;
+    border-radius: 5px;
+}
+.formPart input{
+    width: 500px;
+    padding:15px 5px;
+    margin:5px 0;
+    border:none;
+    border-bottom: 1px solid black;
+}
+.title{
+    background: linear-gradient(to bottom, #ef709b, #ff0f7b);
+    -webkit-background-clip: text; /* For webkit browsers (Chrome, Safari) */
+    color: transparent; /* Make the text transparent so that the gradient shows through */
+    background-clip: text;
+}
+.passwordField{
+    position: relative;
+}
+.fontIcon{
+    position:absolute;
+    right:20px;
+    bottom:15px;
+    cursor: pointer;
+}
+.loginBtn{
+    width:100%;
+    border:none;
+    background-color: #0F2167;
+    border-radius: 3px;
+    margin-top: 10px;
+    color:white;
+    font-size: 15px;
+    font-weight:400;
+    padding: 4px 0;
+    cursor: pointer;
+}
+.forgetPassword{
+    text-align:left;
+    cursor: pointer;
+}
+.emailField,.forgetPassword,.passwordField{
+    margin:8px 0;
+}
