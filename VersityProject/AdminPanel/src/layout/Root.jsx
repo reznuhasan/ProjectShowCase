@@ -1,9 +1,18 @@
 import { Outlet } from 'react-router-dom'
+import DashBoardHeader from '../components/DashBoardHeader'
+import DashBoardSidebar from '../components/DashBoardSidebar'
 
 const Root = () => {
   return (
     <div>
-        <Outlet/>
+        <DashBoardHeader/>
+        <div style={{
+          display:"flex"
+        }}>
+          <DashBoardSidebar/>
+          <Outlet/>
+
+        </div>
     </div>
   )
 }
