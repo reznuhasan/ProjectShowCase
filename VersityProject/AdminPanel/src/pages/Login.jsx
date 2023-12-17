@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Styles from "../styles/Login.module.css";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa6";
+import { apiURL } from "../utlis/apiURL";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -14,17 +16,36 @@ const Login = () => {
       [e.target.name]: e.target.value,
     }));
   };
-  const handleShowPassword=()=>{
-    if(showPassword===false){
-      setShowPassword(true)
-    }else{
-      setShowPassword(false)
+  const handleShowPassword = () => {
+    if (showPassword === false) {
+      setShowPassword(true);
+    } else {
+      setShowPassword(false);
     }
-  }
-  const handleSubmit=(e)=>{
+  };
+  const navigate=useNavigate()
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs)
-  }
+    const user = {
+      userId: inputs.email,
+      password: inputs.password,
+    };
+    setInputs({
+      email: "",
+      password: "",
+    });
+    try {
+      const res = await apiURL.post("/auth/login", user);
+      console.log(res.data);
+      if (res.status === 200) {
+        navigate("/dashboard")
+        localStorage.setItem("token",res.data.token);
+      }
+    } catch (error) {
+      console.log(error);
+      alert("something wrong");
+    }
+  };
   return (
     <div className={Styles.loginComponent}>
       <div className={Styles.formPart}>
@@ -32,29 +53,35 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <div className={Styles.emailField}>
             <input
-              type="email"
+              type="text"
               name="email"
               value={inputs.email}
               onChange={handleChanged}
-              placeholder="enter your email"
+              placeholder="enter email or user id"
             />
           </div>
           <div className={Styles.passwordField}>
             <input
-              type={showPassword?"text":"password"}
+              type={showPassword ? "text" : "password"}
               name="password"
               value={inputs.password}
               onChange={handleChanged}
-              placeholder="enter your password"
+              placeholder="enter password"
             />
             <div className={Styles.fontIcon}>
-              {showPassword ? <FaRegEye onClick={handleShowPassword}/> : <FaRegEyeSlash onClick={handleShowPassword}/>}
+              {showPassword ? (
+                <FaRegEye onClick={handleShowPassword} />
+              ) : (
+                <FaRegEyeSlash onClick={handleShowPassword} />
+              )}
             </div>
           </div>
           <div className={Styles.forgetPassword}>
             <p>Forget Your Password?</p>
           </div>
-          <button type="submit" className={Styles.loginBtn}>Login</button>
+          <button type="submit" className={Styles.loginBtn}>
+            Login
+          </button>
         </form>
       </div>
     </div>
