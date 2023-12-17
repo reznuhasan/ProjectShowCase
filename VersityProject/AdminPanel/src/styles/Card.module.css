@@ -1,0 +1,31 @@
+a{
+    text-decoration:none;
+}
+.cardComponent {
+    width: 30%;
+    height: 30%;
+    padding: 30px 20px;
+    border-left: 3px solid green;
+    margin-left: 40px;
+    margin-top: 30px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    webkit-box-shadow: 9px 8px 5px 0px rgba(194, 153, 194, 0.46);
+    -moz-box-shadow: 9px 8px 5px 0px rgba(194, 153, 194, 0.46);
+    box-shadow: 9px 8px 5px 0px rgba(194, 153, 194, 0.46);
+}
+
+.cardComponent h2 {
+    font-size: 17px;
+    color:#180D1A !important;
+}
+.cardComponent h2:hover {
+    font-size: 17px;
+    color:#1B4242 !important;
+    text-decoration: underline !important;
+}
+
+.cardComponent p {
+    padding-top: 20px;
+    font-size: 14px;
+}
