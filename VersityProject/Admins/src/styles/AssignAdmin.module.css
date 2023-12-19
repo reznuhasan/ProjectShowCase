@@ -1,0 +1,23 @@
+.AssignAdmin{
+    margin-top:5px;
+}
+.inputField{
+    margin-top: 8px;
+}
+.inputField input{
+    width: 70%;
+    padding:6px 5px;
+    outline: none;
+    margin-top: 3px;
+}
+.adminAddButton {
+    background-color: #28a745; 
+    color: #ffffff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}

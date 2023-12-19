@@ -1,0 +1,39 @@
+.adminRole {
+    width: 80%;
+    padding:30px 50px;
+}
+
+.adminRole h2 {
+    font-size: 20px;
+    color: #180D1A !important;
+}
+
+.adminRole p {
+    padding-top: 10px;
+    font-size: 16px;
+}
+.adminRole .admins{
+    padding-top: 30px;
+}
+.adminInfo{
+    margin-top: 10px;
+    display: flex;
+    width:70%;
+    justify-content: space-between;
+    align-items: center;
+}
+.adminInfo h3{
+    font-size: 17px;
+    color: #040507 !important;
+    font-weight: 400;
+}
+.adminInfo .btn{
+    background-color: #ff4136;
+    color: #ffffff; 
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
