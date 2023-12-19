@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Styles from "../styles/AssignAdmin.module.css"
 import ImportLabel from './ImportLabel'
 import { apiURL } from '../utlis/apiURL'
@@ -6,6 +6,7 @@ const AssignAdmin = () => {
   const [admin, setAdmin] = useState({
     fullName: "",
     email: "",
+    role:"admin",
     password: "",
   })
   const handleChanged = (e) => {
@@ -17,8 +18,20 @@ const AssignAdmin = () => {
   const handleSumbit =async(e) => {
     e.preventDefault()
     try {
-      console.log(admin)
-      const res=await apiURL.post("/admin/register",admin)
+      const token=localStorage.getItem("token");
+      if(!token){
+        alert("token is not found")
+        return;
+      }
+      const config={
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      }
+      const res=await apiURL.post("/admin/register",admin,config)
+      if(res.status===200){
+        alert("Admin Create Successfully");
+      }
       console.log(res.data)
     } catch (error) {
       console.log(error)
