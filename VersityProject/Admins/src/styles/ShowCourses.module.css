@@ -1,0 +1,35 @@
+.showCourses{
+    width:80%;
+    padding: 20px;
+}
+.titleBox{
+    background-color: #214689;
+    border-radius: 5px;
+    color: aliceblue;
+    padding: 10px;
+}
+.titleBox h1{
+    font-size: 20px;
+    font-weight: 600;
+}
+.showCourses .search input{
+    width: 500px;
+    margin-top: 40px;
+    padding-top:9px;
+    padding-bottom: 9px;
+    padding-left: 10px;
+    border-radius: 5px;
+    outline: none;
+}
+.availableTitle{
+    margin-top: 30px;
+}
+.availableTitle h1{
+    font-size: 20px;
+    font-weight: 600;
+}
+.courseCardsContainer{
+   display: flex;
+   flex-direction: column;
+   margin-top: 20px;
+}

@@ -7,6 +7,8 @@ import AssignAdmin from "./components/AssignAdmin"
 import Department from "./pages/AddDepartment"
 import AddDepartment from "./pages/AddDepartment"
 import AddCourse from "./pages/AddCourse"
+import ShowDepartments from "./pages/ShowDepartments"
+import ShowCourses from "./pages/ShowCourses"
 
 
 
@@ -35,6 +37,14 @@ function App() {
        {
         path:"course/add",
         element:<AddCourse/>
+       },
+       {
+        path:"department",
+        element:<ShowDepartments/>
+       },
+       {
+        path:"course",
+        element:<ShowCourses/>
        }
       ]
     },

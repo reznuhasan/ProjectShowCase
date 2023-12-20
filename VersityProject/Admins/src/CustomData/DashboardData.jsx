@@ -16,10 +16,15 @@ export const dashboardCardComponent=[
         url:"/dashboard/course/add",
     },
     {
-        title:"All Departments",
+        title:"Available Departments",
         text:"Add vertical to rise flexibility for users. to rise flexibility for users, ertical to rise flexibility",
         url:"/dashboard/department",
     },
+    {
+        title:"Available Courses",
+        text:"Add vertical to rise flexibility for users. to rise flexibility for users, ertical to rise flexibility",
+        url:"/dashboard/course", 
+    }
 
 
 ]
