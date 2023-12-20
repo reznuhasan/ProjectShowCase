@@ -4,7 +4,9 @@ import Root from "./layout/Root"
 import DashboardHome from "./pages/DashboardHome"
 import AdminRole from "./pages/AdminRole"
 import AssignAdmin from "./components/AssignAdmin"
-import Department from "./pages/Department"
+import Department from "./pages/AddDepartment"
+import AddDepartment from "./pages/AddDepartment"
+import AddCourse from "./pages/AddCourse"
 
 
 
@@ -27,8 +29,12 @@ function App() {
         element:<AdminRole/>
        },
        {
-        path:"department",
-        element:<Department/>
+        path:"department/add",
+        element:<AddDepartment/>
+       },
+       {
+        path:"course/add",
+        element:<AddCourse/>
        }
       ]
     },

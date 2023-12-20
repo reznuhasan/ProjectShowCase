@@ -1,10 +1,7 @@
-a{
-    text-decoration:none;
-}
 .cardComponent1 {
-    width: 30%;
-    height: 30%;
-    padding: 30px 20px;
+    width: 28%;
+    height: 40%;
+    padding: 20px 20px;
     border-left: 7px solid #03396C;
     margin-left: 40px;
     margin-top: 30px;
@@ -15,9 +12,9 @@ a{
     box-shadow: 9px 8px 5px 0px rgba(194, 153, 194, 0.46);
 }
 .cardComponent2 {
-    width: 30%;
-    height: 30%;
-    padding: 30px 20px;
+    width: 28%;
+    height: 40%;
+    padding: 20px 20px;
     border-left: 7px solid green;
     margin-left: 40px;
     margin-top: 30px;

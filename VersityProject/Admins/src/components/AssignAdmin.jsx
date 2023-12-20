@@ -37,6 +37,12 @@ const AssignAdmin = () => {
       console.log(error)
       alert("Something Missing")
     }
+    setAdmin({
+      fullName: "",
+      email: "",
+      role:"admin",
+      password: "",
+    })
   }
   return (
     <div className={Styles.AssignAdmin}>
