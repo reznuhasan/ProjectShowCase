@@ -2,7 +2,13 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import Login from "./pages/Login"
 import Root from "./layout/Root"
 import DashboardHome from "./pages/DashboardHome"
-import AdminReg from "./components/AdminReg"
+import AdminRole from "./pages/AdminRole"
+import AssignAdmin from "./components/AssignAdmin"
+import Department from "./pages/AddDepartment"
+import AddDepartment from "./pages/AddDepartment"
+import AddCourse from "./pages/AddCourse"
+import ShowDepartments from "./pages/ShowDepartments"
+import ShowCourses from "./pages/ShowCourses"
 
 
 
@@ -21,8 +27,24 @@ function App() {
         element:<DashboardHome/>
        },
        {
-        path:"admin/add",
-        element:<AdminReg/>
+        path:"admin",
+        element:<AdminRole/>
+       },
+       {
+        path:"department/add",
+        element:<AddDepartment/>
+       },
+       {
+        path:"course/add",
+        element:<AddCourse/>
+       },
+       {
+        path:"department",
+        element:<ShowDepartments/>
+       },
+       {
+        path:"course",
+        element:<ShowCourses/>
        }
       ]
     },

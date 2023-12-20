@@ -14,7 +14,7 @@ const DashboardHome = () => {
   return (
     <div className={Styles.dashboardHome}>
         {
-            cardComponent.map((cardData,index)=><Card key={index} cardData={cardData}></Card>)
+            cardComponent.map((cardData,index)=><Card key={index} value={index} cardData={cardData}></Card>)
         }
     </div>
   )
