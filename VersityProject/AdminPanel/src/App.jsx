@@ -9,6 +9,7 @@ import AddDepartment from "./pages/AddDepartment"
 import AddCourse from "./pages/AddCourse"
 import ShowDepartments from "./pages/ShowDepartments"
 import ShowCourses from "./pages/ShowCourses"
+import AddSemester from "./pages/AddSemester"
 
 
 
@@ -45,6 +46,10 @@ function App() {
        {
         path:"course",
         element:<ShowCourses/>
+       },
+       {
+        path:"semester",
+        element:<AddSemester/>
        }
       ]
     },

@@ -1,0 +1,53 @@
+.addSemester{
+    width: 80%;
+    padding: 20px 30px;
+    margin-top: 50px;
+}
+.addSemester .title h1{
+    font-size: 20px;
+    font-weight: 500;
+    color:rgb(14, 63, 40);
+}
+.addSemester .inputField{
+    margin-top: 8px;
+}
+.addSemester .inputField input{
+    width: 100%;
+    padding: 6px 5px;
+    outline: none;
+    margin: 4px;
+}
+.addSemester .buttonField button{
+    width: 100%;
+    background-color: #3498db; /* Button background color */
+    color: #fff; /* Text color */
+    padding: 10px 15px; /* Padding around the text */
+    font-size: 16px; /* Font size */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+}
+.addSemester .buttonField button:hover{
+    background-color: #2980b9;
+}
+.addSemester .selectInput{
+    width: 100%;
+    padding: 6px 5px;
+}
+.totalCourseTitle h1{
+    font-size: 20px;
+    font-weight: 500;
+    color:rgb(14, 63, 40);
+    margin: 10px 0;
+    text-align: center;
+}
+.addNewCourse button{
+    border: none;
+    color:white;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #1c384b;
+    padding: 6px 20px;
+}
