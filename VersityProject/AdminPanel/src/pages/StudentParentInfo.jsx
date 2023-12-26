@@ -1,25 +1,11 @@
 import { useFormik } from 'formik'
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { useNavigate } from 'react-router-dom';
 import Styles from "../styles/StudentParentInfo.module.css"
 import { ParentSchema } from '../Model/ParentSchema';
-const initialValues = {
-    fatherName: "",
-    fatherPhone: "",
-    fatherOcupation: "",
-    fatherDesignation: '',
-    motherName: "",
-    motherPhone: "",
-    motherOcupation: "",
-    motherDesignation: "",
-    totalFamilyMembers: "",
-    totalSister: "",
-    totalBrother: "",
-    sibilingInVersity: "no",
-    parentFreedomFighter: "no",
-    fighterCertificate: "",
-}
+import { StudentContext } from '../ContextHook/StudentDataProvider';
+
 const validate=values=>{
     const errors={};
     if(values.parentFreedomFighter==="yes" && !values.fighterCertificate){
@@ -29,15 +15,21 @@ const validate=values=>{
   }
 const StudentParentInfo = () => {
     const navigate = useNavigate()
+    const {initialStudentData,setInitialStudentData}=useContext(StudentContext)
     const formik = useFormik({
-        initialValues: initialValues,
+        initialValues: initialStudentData,
         validationSchema: ParentSchema,
         validate,
         onSubmit: (values) => {
             console.log(values)
+            setInitialStudentData(prevState=>({
+                ...prevState,
+                ...values
+            }))
             formik.resetForm()
             if (formik.isValid) {
-                navigate('/')
+                localStorage.setItem("StudentFamilyData",JSON.stringify(initialStudentData))
+                navigate('/dashboard')
             }
         }
     })

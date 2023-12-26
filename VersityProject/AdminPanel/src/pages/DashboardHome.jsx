@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { dashboardCardComponent } from '../CustomData/DashboardData'
 import Card from '../components/Card'
 import Styles from "../styles/DashboardHome.module.css"
+import { StudentContext } from '../ContextHook/StudentDataProvider'
 const DashboardHome = () => {
     const [cardComponent,setCardComponent] =useState([])
     useEffect(()=>{
@@ -10,6 +11,8 @@ const DashboardHome = () => {
         }
         loadData();
     },[])
+    const {initialStudentData}=useContext(StudentContext)
+    console.log(initialStudentData)
     if(cardComponent.length===0) return <h1>Loading...</h1>
   return (
     <div className={Styles.dashboardHome}>

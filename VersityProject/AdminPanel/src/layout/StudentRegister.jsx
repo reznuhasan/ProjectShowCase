@@ -6,6 +6,7 @@ const StudentRegister = () => {
   return (
     <div className={Styles.studentRegister}>
       <Outlet/>
+      
     </div>
   )
 }

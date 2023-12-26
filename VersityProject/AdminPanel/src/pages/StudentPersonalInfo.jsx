@@ -1,36 +1,25 @@
 import { useFormik } from 'formik';
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { useNavigate } from 'react-router-dom';
 import { personalSchema } from '../Model/PersonalSchema';
 import Styles from "../styles/StudentPersonalInfo.module.css"
-const initialValues = {
-  firstName: "",
-  lastName: "",
-  nickName: "",
-  phone: "",
-  email: "",
-  dateOfBirth: "",
-  placeOfBirth: "",
-  gender: "",
-  maritalStatus: "",
-  presentAddress: "",
-  permanentAddress: "",
-  nationality: "",
-  religion: "",
-  nationalId: "",
-  passportNo: "",
-}
+import { StudentContext } from '../ContextHook/StudentDataProvider';
 
 
 const StudentPersonalInfo = () => {
+  const {initialStudentData,setInitialStudentData}=useContext(StudentContext)
   const navigate=useNavigate()
   const formik = useFormik({
-    initialValues:initialValues,
+    initialValues:initialStudentData,
     validationSchema:personalSchema,
     onSubmit: (values, action) => {
-      console.log(values);
+      setInitialStudentData(prevState=>({
+        ...prevState,
+        ...values
+      })) 
       if(formik.isValid){
+        localStorage.setItem("StudentData",JSON.stringify(values))
         navigate('/dashboard/student/register/family-Info')
       }
       action.resetForm()
