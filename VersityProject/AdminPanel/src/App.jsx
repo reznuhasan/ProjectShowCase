@@ -10,6 +10,11 @@ import AddCourse from "./pages/AddCourse"
 import ShowDepartments from "./pages/ShowDepartments"
 import ShowCourses from "./pages/ShowCourses"
 import AddSemester from "./pages/AddSemester"
+import TeacherRegister from "./pages/TeacherRegister"
+import StudentRegister from "./layout/StudentRegister"
+import PersonalInfo from "./pages/StudentPersonalInfo"
+import StudentPersonalInfo from "./pages/StudentPersonalInfo"
+import StudentParentInfo from "./pages/StudentParentInfo"
 
 
 
@@ -50,6 +55,24 @@ function App() {
        {
         path:"semester",
         element:<AddSemester/>
+       },
+       {
+        path:"teacher/register",
+        element:<TeacherRegister/>
+       },
+       {
+        path:"student/register",
+        element:<StudentRegister/>,
+        children:[
+        {
+           path:"",
+           element:<StudentPersonalInfo/>
+        },
+        {
+          path:"family-info",
+          element:<StudentParentInfo/>
+        }
+      ]
        }
       ]
     },

@@ -30,6 +30,16 @@ export const dashboardCardComponent=[
         text:"Add vertical to rise flexibility for users. to rise flexibility for users, ertical to rise flexibility",
         url:"/dashboard/course", 
     },
+    {
+        title:"Teacher Register",
+        text:"Add vertical to rise flexibility for users. to rise flexibility for users, ertical to rise flexibility",
+        url:"/dashboard/teacher/register", 
+    },
+    {
+        title:"Student Register",
+        text:"Add vertical to rise flexibility for users. to rise flexibility for users, ertical to rise flexibility",
+        url:"/dashboard/student/register", 
+    }
 
 
 ]

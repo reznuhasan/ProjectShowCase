@@ -1,0 +1,57 @@
+.TeacherPersonalInfo{
+    padding: 20px 30px;
+    width: 80%;
+}
+input{
+    padding: 8px;
+}
+.namePart{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.namePart input{
+    width: 250px;
+}
+.contactPart{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+.contactPart input{
+    width: 375px;
+}
+.datePicker{
+    width: 700px;
+    padding: 8px;
+    border-radius: 4px;
+}
+.religionSelect{
+    width: 700px;
+}
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .radio-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .radio-label input {
+    margin-right: 8px;
+  }
+  
+  .radio-label span {
+    font-size: 16px;
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+  }

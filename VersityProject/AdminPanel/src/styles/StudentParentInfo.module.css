@@ -1,0 +1,41 @@
+.StudentParentInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+.StudentParentInfoForm{
+    width:90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.StudentParentInfo .StudentParentInfoForm .inputField{
+    margin: 3px 0;
+}
+.StudentParentInfo .StudentParentInfoForm input{
+    width: 100%;
+    padding: 6px 0;
+}
+.StudentParentInfo .StudentParentInfoForm .StudentParentInfoSelection{
+    display: flex;
+    justify-content: space-between;
+}
+.StudentParentInfo .StudentParentInfoForm .StudentParentInfoSelection select{
+    padding: 6px 0;
+    margin: 5px 0;
+}
+.nextButton{
+    width: 150px;
+    padding: 10px 0;
+    background-color: #28A745;
+    border: none;
+    color: whitesmoke;
+    margin-top: 4px;
+}
+.formError{
+    margin-top: -2px;
+    color: red;
+}
