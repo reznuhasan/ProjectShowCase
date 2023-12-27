@@ -61,7 +61,7 @@ const Header = () => {
                             <div className={Styles.dropdownMenu}>
                               <NavLink >Change Profile</NavLink>
                               <NavLink to="/upload-report">Upload Report</NavLink>
-                              <NavLink>Show Report</NavLink>
+                              <NavLink to="/show-report">Show Report</NavLink>
                               <button className={Styles.logout} onClick={handleLogout}>Logout</button>
                             </div>
                             <p>{userName}</p>

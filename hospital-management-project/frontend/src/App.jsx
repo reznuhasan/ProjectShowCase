@@ -23,6 +23,7 @@ import ErrorPage from "./Pages/ErrorPage"
 import DashBoardHome from "./components/DashBoardHome"
 import DashBoardAppointment from "./components/DashBoardAppointment"
 import CabinForm from "./components/CabinForm"
+import ShowReport from "./components/ShowReport"
 
 
 function App() {
@@ -63,6 +64,10 @@ function App() {
             {
               path:"upload-report",
               element:<UploadReport/>
+            },
+            {
+              path:"show-report",
+              element:<ShowReport/>
             },
             {
               path: "cabins",
