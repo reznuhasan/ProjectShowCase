@@ -56,4 +56,16 @@ const getAllUser=async (req, res)=>{
       return res.status(500).json({ error: "Internal Server Error" });
    }
 }
-export {createUser,loginUser,uploadReport,getAllUser};
+const getUserReports=async(req,res)=>{
+   try {
+     const user=await User.findById(req.body.id)
+     if(!user){
+      return res.status(401).json({"error":"User is not found"})
+     }
+     const allReports=user.reports
+     return res.status(200).json({"message":"all user reports successfully",allReports}) 
+   } catch (error) {
+     return res.status(500).json({ error: "Internal Server Error" });
+   }
+}
+export {createUser,loginUser,uploadReport,getAllUser,getUserReports};
