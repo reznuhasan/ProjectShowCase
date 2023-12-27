@@ -22,6 +22,7 @@ import UploadReport from "./components/UploadReport"
 import ErrorPage from "./Pages/ErrorPage"
 import DashBoardHome from "./components/DashBoardHome"
 import DashBoardAppointment from "./components/DashBoardAppointment"
+import CabinForm from "./components/CabinForm"
 
 
 function App() {
@@ -129,8 +130,11 @@ function App() {
             },
             {
               path:"appointment/approved",
+            },
+            {
+              path:"cabin",
+              element:<CabinForm/>
             }
-            
           ]
         }
       ]

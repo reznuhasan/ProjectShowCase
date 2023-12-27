@@ -1,8 +1,7 @@
 import React from 'react'
 import Style from '../Styles/CabinBox.module.css'
 const CabinBox = ({ cabin }) => {
-  const { room, floor, date, price, bed, facilities } = cabin;
-  console.log(cabin)
+  const { room, floor, availableTime, price, bed, facilities } = cabin;
   return (
     <div className={Style.cabinbox}>
       <div className="title">
@@ -20,7 +19,7 @@ const CabinBox = ({ cabin }) => {
         <h2>Price:{price}</h2>
       </div>
       <div>
-        <h2>Available Time:{date}</h2>
+        <h2>Available Time:{availableTime}</h2>
       </div>
       <div>
         <button className={Style.bookBtn}>Book Now</button>

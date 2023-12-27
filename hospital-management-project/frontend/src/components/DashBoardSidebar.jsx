@@ -116,6 +116,10 @@ const DashBoardSidebar = () => {
       <div className={Styles.dashboardNav}>
         <NavLink to="/dashboard/appointment">Users</NavLink>
       </div>
+      <div className={Styles.dashboardNav}>
+        <NavLink to="/dashboard/cabin">Cabin</NavLink>
+      </div>
+      
     </div>
   );
 };

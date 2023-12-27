@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Styles from "../Styles/Premium.module.css"
 import CabinBox from '../components/CabinBox'
+import { apiURI } from '../utlis/api';
 const StandardCabin = () => {
+  const [cabins,setCabins]=useState([]);
+  useEffect(()=>{
+    const loadData=async()=>{
+      const res=await apiURI.get('/cabin/all');
+      const PremiumCabin=res.data.allCabins.filter(cabin=>cabin.category==="standard")
+      console.log(PremiumCabin)
+      setCabins(PremiumCabin)
+    }
+    loadData()
+  },[])
   return (
     <div className={Styles.premium}>
       <div>
@@ -11,90 +22,9 @@ const StandardCabin = () => {
           color:"#9b1f4b"
         }}>Standard Cabins</h1>
       </div>
-      <CabinBox cabin={{
-        room:400,
-        floor:3,
-        date:"now",
-        price:400,
-        bed:1,
-        facilities:{
-          nurse:2,
-          servent:3,
-          ac:1,
-          tv:1,
-          foods:"4 times"
-        }
-      }}/>
-      <CabinBox cabin={{
-        room:400,
-        floor:3,
-        date:"now",
-        price:400,
-        bed:1,
-        facilities:{
-          nurse:2,
-          servent:3,
-          ac:1,
-          tv:1,
-          foods:"4 times"
-        }
-      }}/>
-      <CabinBox cabin={{
-        room:400,
-        floor:3,
-        date:"now",
-        price:400,
-        bed:1,
-        facilities:{
-          nurse:2,
-          servent:3,
-          ac:1,
-          tv:1,
-          foods:"4 times"
-        }
-      }}/>
-      <CabinBox cabin={{
-        room:400,
-        floor:3,
-        date:"now",
-        price:400,
-        bed:1,
-        facilities:{
-          nurse:2,
-          servent:3,
-          ac:1,
-          tv:1,
-          foods:"4 times"
-        }
-      }}/>
-      <CabinBox cabin={{
-        room:400,
-        floor:3,
-        date:"now",
-        price:400,
-        bed:1,
-        facilities:{
-          nurse:2,
-          servent:3,
-          ac:1,
-          tv:1,
-          foods:"4 times"
-        }
-      }}/>
-      <CabinBox cabin={{
-        room:400,
-        floor:3,
-        date:"now",
-        price:400,
-        bed:1,
-        facilities:{
-          nurse:2,
-          servent:3,
-          ac:1,
-          tv:1,
-          foods:"4 times"
-        }
-      }}/>
+      {
+        cabins.map(cabin=><CabinBox key={cabin._id} cabin={cabin}/>)
+      }
     </div>
   )
 }
