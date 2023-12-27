@@ -8,6 +8,7 @@ import doctorRoute from "./doctor.route.js"
 import imageUploadRouter from "./uploadImage.route.js"
 import uploadReportRouter from "./report.route.js"
 import appointmentRouter from "./appointment.route.js"
+import cabinRouter from "./cabin.route.js";
 const router = express.Router();
 
 router.use('/api/v1/users',userRoute);
@@ -19,5 +20,6 @@ router.use('/api/v1/doctor/certification',doctorCertificate);
 router.use('/api/v1/doctor',doctorRoute)
 router.use('/api/v1/upload/image',imageUploadRouter);
 router.use('/api/v1/user/appointment',appointmentRouter);
+router.use('/api/v1/cabin',cabinRouter)
 
 export default router;
