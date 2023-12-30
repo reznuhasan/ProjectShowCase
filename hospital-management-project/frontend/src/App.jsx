@@ -24,6 +24,7 @@ import DashBoardHome from "./components/DashBoardHome"
 import DashBoardAppointment from "./components/DashBoardAppointment"
 import CabinForm from "./components/CabinForm"
 import ShowReport from "./components/ShowReport"
+import CabinAppointment from "./components/CabinAppointment"
 
 
 function App() {
@@ -88,9 +89,12 @@ function App() {
                 {
                   path: "ot",
                   element: <OperationCabin />
-                }
+                },
               ]
-
+            },
+            {
+              path:"cabin/appointment/:_id",
+              element:<CabinAppointment/>
             },
             {
               path: "/register",

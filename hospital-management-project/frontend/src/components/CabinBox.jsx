@@ -1,7 +1,8 @@
 import React from 'react'
 import Style from '../Styles/CabinBox.module.css'
+import { Link } from 'react-router-dom';
 const CabinBox = ({ cabin }) => {
-  const { room, floor, availableTime, price, bed, facilities } = cabin;
+  const { _id,room, floor, availableTime, price, bed, facilities } = cabin;
   return (
     <div className={Style.cabinbox}>
       <div className="title">
@@ -16,13 +17,15 @@ const CabinBox = ({ cabin }) => {
         </div>
       </div>
       <div className={Style.price}>
-        <h2>Price:{price}</h2>
+        <h2>Price:{price} per hour</h2>
       </div>
       <div>
         <h2>Available Time:{availableTime}</h2>
       </div>
       <div>
-        <button className={Style.bookBtn}>Book Now</button>
+        <Link to={`/cabin/appointment/${_id}`}>
+          <button className={Style.bookBtn}>Book Now</button>
+        </Link>
         <button className={Style.SeeMore}>See More...</button>
       </div>
     </div>
